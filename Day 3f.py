@@ -25,3 +25,6 @@ elif move=='right':
     print("You fell into a hole. Game Over")
 else:
     print("You made a dumb choice. Game Over")
+
+
+#END OF CODE#
