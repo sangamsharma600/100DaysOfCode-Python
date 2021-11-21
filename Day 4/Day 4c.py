@@ -11,5 +11,7 @@ column=int(column)-1
 row=location[1]
 row=int(row)-1
 map[row][column]='X'
-
+ 
 print(f"{row1}\n{row2}\n{row3}")
+
+#END OF CODE#

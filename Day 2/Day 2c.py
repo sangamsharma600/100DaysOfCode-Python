@@ -10,3 +10,4 @@ weeksLeft=(yearsLeft*365)/7
 print(f"You have {daysLeft} days, {int(weeksLeft)} weeks and {monthsLeft} months left till your death. ")
 
 #END OF CODE
+ 

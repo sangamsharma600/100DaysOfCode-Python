@@ -5,4 +5,4 @@ fName=input("Enter your favourite food's name : ")
 pName=input("Enter your favourite place name : ")
 print("Your resturant name could be : "+pName+" "+fName)
 
-#END OF CODE
+#END OF CODE 

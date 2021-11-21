@@ -14,4 +14,4 @@ else:
     splittedAmount="{:.2f}".format(splittedAmount)
     print(f"You each need to pay : Rs {splittedAmount} ")
 
-    #END OF CODE
+    #END OF CODE 

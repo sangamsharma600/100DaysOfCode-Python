@@ -6,4 +6,4 @@ if num==0:
 else:
     print("Tails")
 
-    #END OF CODE#
+    #END OF CODE# 

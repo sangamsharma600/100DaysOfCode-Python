@@ -6,4 +6,4 @@ names=names.split(", ")
 luck=random.randint(0,len(names)-1)
 print(f"{names[luck]} will pay the bill today.")
 
-#END OF CODE#
+#END OF CODE# 

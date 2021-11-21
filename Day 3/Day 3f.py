@@ -26,5 +26,5 @@ elif move=='right':
 else:
     print("You made a dumb choice. Game Over")
 
-
+ 
 #END OF CODE#
