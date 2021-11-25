@@ -33,7 +33,7 @@ for i in range(0,num_symbols):
 
 
 print(f"\nYour generated password is : {password}")
-print(f"Your generated stronger password is : {strong_password.join(random.sample(password,len(password)))}")
+print(f"Your generated stronger password is : {strong_password.join(random.sample(password,len(password)))}\n")
 
 # END OF CODE #
 
