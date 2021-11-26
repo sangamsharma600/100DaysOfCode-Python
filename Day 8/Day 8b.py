@@ -5,10 +5,6 @@ alphabets=[
 ]
 
 
-
-
-    
-
 enc_dec=input("What would you like to do ? Encrypt or Decrypt :").lower()
 if enc_dec=='encrypt' or enc_dec=='decrypt':
     shifts=int(input("How much shift do you want ?"))
@@ -39,4 +35,7 @@ if enc_dec=='decrypt':
 elif enc_dec=='encrypt':
     encrypt(text,shifts)
 else:
-    print('Please enter encrypt or decrypt')
+    print('Please only enter either encrypt or decrypt 🙂')
+
+    #ENDOFCODE#
+
