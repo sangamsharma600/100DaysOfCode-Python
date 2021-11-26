@@ -25,7 +25,7 @@ def decrypt(text,shifts):
         old_position=alphabets.index(letter)    
         new_position=old_position-shifts
         decrypted_text+=alphabets[new_position]
-    print(decrypted_text)
+    print(f"Your decrypted text is {decrypted_text}")
 
 
 # encrypt(text=text,shifts=shifts)
