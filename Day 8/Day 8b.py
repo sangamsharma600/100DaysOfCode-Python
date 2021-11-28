@@ -38,5 +38,3 @@ while is_continue:
         print("Please enter a valid input")
 
     #ENDOFCODE#
-
-#HEllo this is a test program#
