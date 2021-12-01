@@ -79,4 +79,3 @@ while input("Do you want to play Blackjack? Type 'y' or 'n': ") == "y":
 
 
 # END OF CODE #
-## REFERENCE = APPBREWERY ##
