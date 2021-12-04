@@ -35,10 +35,10 @@ while not is_game_over:
       score+=1
   elif answer=='b' and followers2>followers1:
     score+=1
-    temp_data=data2
   else:
     print(f"Game Over. Your high score is {score}")
     is_game_over=True
+  temp_data=data2
 
 
 # END OF CODE #
