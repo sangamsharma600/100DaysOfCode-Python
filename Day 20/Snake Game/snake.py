@@ -17,14 +17,19 @@ class Snake:
 
     def create_snake(self):
         for i in STARGING_POSITIONS:
-            my_turtle=Turtle('square')
-            my_turtle.color('white')
-            my_turtle.penup()
-            my_turtle.goto(i)
-            self.my_turtles.append(my_turtle)
-    def move(self):
-        # is_game_on=True
+           self.add_length(i)
 
+    def add_length(self,i):
+         my_turtle=Turtle('square')
+         my_turtle.color('white')
+         my_turtle.penup()
+         my_turtle.goto(i)
+         self.my_turtles.append(my_turtle)
+    
+    def extend_snake(self):
+        self.add_length(self.my_turtles[-1].position())
+
+    def move(self):
         for my_turtle_num in range(len(self.my_turtles)-1,0,-1):
             new_x=self.my_turtles[my_turtle_num-1].xcor()
             new_y=self.my_turtles[my_turtle_num-1].ycor()
@@ -42,9 +47,6 @@ class Snake:
     def right(self):
         if self.head.heading() !=LEFT:
             self.head.setheading(RIGHT)
-    
-
-
 
     
     
