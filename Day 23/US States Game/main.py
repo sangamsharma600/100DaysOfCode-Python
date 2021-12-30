@@ -13,7 +13,7 @@ y_cor = states_data.y.to_list()
 correct_guesses = []
 score_count = 0
 
-while is_game_on and score_count != 50:
+while is_game_on and len(correct_guesses) < 50:
     answer_state = screen.textinput(title=f"{score_count}/50 Guess the name", prompt="What's the next state? ").title()
     if answer_state == 'Exit':
         missing_states = []
@@ -31,13 +31,12 @@ while is_game_on and score_count != 50:
         my_turtle.hideturtle()
         my_turtle.goto(x_index, y_index)
         my_turtle.write(answer_state)
+        if answer_state not in correct_guesses:
+            score_count += 1
         correct_guesses.append(answer_state)
-        score_count += 1
 
 if score_count == 50:
     print("You guessed all correct. Congratulations")
-
-print(missing_states)
 
 
 
