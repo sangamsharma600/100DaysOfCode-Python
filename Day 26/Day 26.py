@@ -15,7 +15,7 @@ LONG_BREAK_MIN = 20
 reps=0
 after_timer = None
 ticks = ""
-# ---------------------------- TIMER RESET ------------------------------- # 
+# TIMER RESET # 
 def reset_timer(): 
     global ticks
     global reps
@@ -26,7 +26,7 @@ def reset_timer():
     check_mark.config(text=ticks)
     reps = 0
 
-# ---------------------------- TIMER MECHANISM ------------------------------- # 
+#  TIMER MECHANISM  # 
 
 def start_timer():
     countdown(WORK_MIN)
