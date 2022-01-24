@@ -1,9 +1,7 @@
 import math
-from pydoc import text
 from tkinter import *
 import tkinter
-from turtle import title, width
-# ---------------------------- CONSTANTS ------------------------------- #
+# CONSTANTS #
 PINK = "#e2979c"
 RED = "#e7305b"
 GREEN = "#9bdeac"
@@ -29,7 +27,7 @@ def reset_timer():
 #  TIMER MECHANISM  # 
 
 def start_timer():
-    countdown(WORK_MIN)
+    countdown(WORK_MIN* 60)
 
 
 
@@ -56,13 +54,13 @@ def countdown(count):
         check_mark.config(text=ticks)
         reps += 1
         if reps == 1 or reps == 3 or reps == 5:
-            countdown(SHORT_BREAK_MIN )
+            countdown(SHORT_BREAK_MIN * 60)
             timer.config(text="Break",font=(FONT_NAME,35,'bold'),fg=PINK)
         elif reps == 2 or reps == 4 or reps == 6:
-            countdown(WORK_MIN  )
+            countdown(WORK_MIN  * 60)
             timer.config(text="Work",font=(FONT_NAME,35,'bold'),fg=GREEN)
         elif reps == 7:
-            countdown(LONG_BREAK_MIN )
+            countdown(LONG_BREAK_MIN * 60)
             timer.config(text="Break",font=(FONT_NAME,35,'bold'),fg=RED)
 
 
