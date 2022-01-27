@@ -1,8 +1,12 @@
 import random
+from textwrap import indent
 import tkinter
 from tkinter.ttk import Entry, Label
 from tkinter import messagebox
+from turtle import width
+from typing import TYPE_CHECKING
 import pyperclip
+import json
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate_password():
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
@@ -31,16 +35,55 @@ def generate_password():
 # ---------------------------- SAVE PASSWORD ------------------------------- #
  
 def add_button_clicked():
-    if len(website_entry.get()) !=0 and len(email_username_entry.get())!=0 and len(password_entry.get())!=0 :
-        is_ok = messagebox.askokcancel(title=website_entry.get(),message=f"Is this correct \n\nEmail : {email_username_entry.get()}\nPassword : {password_entry.get()}")
+    website = website_entry.get().lower()
+    email_username = email_username_entry.get()
+    password = password_entry.get()
+
+    password_dict = {
+        website:{
+            "email":email_username,
+            "password":password
+        }
+    }
+    ####################### Reading Updating and Dumping JSON Data ########################
+    if len(website) !=0 and len(email_username)!=0 and len(password)!=0 :
+        is_ok = messagebox.askokcancel(title=website,message=f"Is this correct \n\nEmail : {email_username}\nPassword : {password}")
+        if is_ok:
+            try:
+                with open("Day 27/data.json",'r') as data_file:
+                    data = json.load(data_file)
+                    data.update(password_dict)
+
+                with open("Day 27/data.json",'w') as data_file:
+                    json.dump(data,data_file,indent = 4)
+            except FileNotFoundError as exception_message:
+                print(f"File not found : {exception_message}")
+                with open("Day 27/data.json",'w') as data_file:
+                    json.dump(password_dict,data_file, indent=4)
+    ########################################################################################
+
+        website_entry.delete(0,tkinter.END)
+        password_entry.delete(0,tkinter.END)
     else:
         messagebox.showerror(title="Error",message = "Please don't leave any fields empty.")
 
-    if is_ok:
-        with open("Day 27/data.txt",mode='a') as data:
-            data.write(f"|| {website_entry.get()} || {email_username_entry.get()} || {password_entry.get()} || \n")
-        website_entry.delete(0,tkinter.END)
-        password_entry.delete(0,tkinter.END)
+def search_button_clicked():
+    try:
+        if len(website_entry.get())!=0:
+            with open("Day 27/data.json",'r') as data_file:
+                data = json.load(data_file)
+                password = data[website_entry.get().lower()]["password"]
+                email = data[website_entry.get().lower()]["email"]
+
+                messagebox.showinfo(title=website_entry.get().upper(),message= f"Email : {email}\nPassword : {password}")
+        else:
+            messagebox.showerror(title="Whoops ",message= "Please enter website name in the box first.")
+
+    except FileNotFoundError:
+        messagebox.showerror(title="Error",message= "Data file not found. Please add some data first.")
+    except KeyError:
+        messagebox.showerror(title="Whoops",message = "Website record not found in the database")
+    
     
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -54,9 +97,9 @@ canvas.create_image(100 ,100,image=image_location)
 
 
 # Entrys #
-website_entry = Entry(width=35)
-email_username_entry  = Entry(width=35)
-password_entry = Entry(width=21)
+website_entry = Entry(width = 36)
+email_username_entry  = Entry(width=62)
+password_entry = Entry(width=36)
 
 # Labels #
 website = Label(text="Website: ",font=("Arial",10,'bold'))
@@ -64,20 +107,22 @@ email_username=Label(text="Email/Username: ",font=("Arial",10,'bold'))
 password = Label(text="Password",font=("Arial",10,'bold'))
 
 # Buttons #
-generate_password = tkinter.Button(text='Generate Password',command=generate_password)
+generate_password = tkinter.Button(text='Generate Password',width= 21,command=generate_password)
 add_button = tkinter.Button(text="ADD",width=36,command=add_button_clicked)
+search_button = tkinter.Button(text="Search",width=21,command=search_button_clicked)
 
 
 # Aligning Buttons #
 
 generate_password.grid(row=3,column=2)
-add_button.grid(row=4,column=1,columnspan=2)
+add_button.grid(row=4,column=1,pady=10)
+search_button.grid(row=1,column=2)
 
 # Aligning Entries #
 
-website_entry.grid(row=1,column=1,columnspan=2)
+website_entry.grid(row=1,column=1)
 website_entry.focus()
-email_username_entry.grid(row=2,column=1,columnspan=2)
+email_username_entry.grid(row=2,column=1,columnspan=2,pady=5)
 email_username_entry.insert(0, "sangamsharma600@gmail.com")
 password_entry.grid(row=3,column=1)
 
