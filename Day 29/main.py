@@ -22,7 +22,7 @@ if weekday == 6:
         msg = MIMEText(decode_data)
         msg['Subject'] = 'Happy Sunday'
         msg['From'] = my_email
-        receivers='receiversemail@gmail.com'
+        receivers='sangamsharma600@gmail.com'
         
         with smtplib.SMTP("smtp.gmail.com", 587) as connection:
             connection.starttls()
