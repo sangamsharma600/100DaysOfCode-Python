@@ -57,7 +57,7 @@ def is_night():
     if nepal_hour_sunrise >= hour_in_nepal and nepal_hour_sunset <= hour_in_nepal:
         return True
 
-while True:
+while True: 
     time.sleep(60)
     if is_iss_overhead and is_night:
         connection = smtplib.SMTP("smtp.gmail.com",587)
