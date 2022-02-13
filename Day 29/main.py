@@ -19,7 +19,7 @@ if weekday == 6:
         quote = random.choice(all_quotes)
         data=quote.encode(encoding='utf-8')
         decode_data=data.decode('utf-8')
-        msg = MIMEText(decode_data)
+        msg = MIMEText(decode_data) 
         msg['Subject'] = 'Happy Sunday'
         msg['From'] = my_email
         receivers='sangamsharma600@gmail.com'
