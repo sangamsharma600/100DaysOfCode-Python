@@ -1,5 +1,4 @@
 
-from urllib import response
 import requests
 import datetime as dt
 import os
