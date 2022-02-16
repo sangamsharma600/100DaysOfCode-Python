@@ -54,9 +54,7 @@ data = response.json()
 closing_rate = float(data["Time Series (Digital Currency Daily)"][yesterday]["4b. close (USD)"])
 previous_closing_rate = float(data["Time Series (Digital Currency Daily)"][day_before_yesterday]["4b. close (USD)"])
 rate_difference = round(abs(closing_rate - previous_closing_rate),3)
-print(rate_difference)
 percent_diff = round(abs((previous_closing_rate - closing_rate)/previous_closing_rate * 100),2)
-print(percent_diff)
 
 if percent_diff > 0.2:
     get_news()
@@ -74,7 +72,6 @@ with SMTP("smtp.gmail.com",587) as connection:
         body_content = html.unescape(body[i])
         title_content = html.unescape(title[i])
         connection.sendmail(from_addr=MY_EMAIL,to_addrs=MY_EMAIL,msg=f"Subject:BITCOIN {symbol} by {percent_diff}%\n\nTitle: {title_content.encode()}")
-        print(f"Completed {i} mail")
 
 
  
