@@ -15,9 +15,7 @@ nutrition_api_endpoint_parameters = {
     'query':input("What did you did today ? : "),
 }
 
-sheety_api_post = {
-
-}
+sheety_api_post = {}
 
 nutrition_api_headers = {
     "x-app-id":os.environ["NUTRITION_API_APPID"],
